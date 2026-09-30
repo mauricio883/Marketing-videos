@@ -282,6 +282,35 @@
    "cx": 0.5,
    "cy": 0.5,
    "zoom": 1.0
+  },
+  {
+   "id": "ad_led",
+   "src": "AD",
+   "start": 31.0,
+   "dur": 4.0,
+   "cx": 0.63,
+   "cy": 0.22,
+   "zoom": 1.55
+  },
+  {
+   "id": "ad_led_slow",
+   "src": "AD",
+   "start": 32.2,
+   "dur": 2.6,
+   "cx": 0.63,
+   "cy": 0.22,
+   "zoom": 1.55,
+   "speed": 0.46
+  },
+  {
+   "id": "ad_open_slow",
+   "src": "AD",
+   "start": 7.5,
+   "dur": 4.2,
+   "cx": 0.55,
+   "cy": 0.42,
+   "zoom": 1.2,
+   "speed": 0.5
   }
  ]
 }
