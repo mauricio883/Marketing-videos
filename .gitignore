@@ -7,3 +7,7 @@ node_modules/
 *.mov
 !assets/brand/**
 .DS_Store
+
+# campaign deliverables are tracked on purpose
+!deliverables/**
+!deliverables/**/*.mp4
