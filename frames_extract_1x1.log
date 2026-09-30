@@ -1,0 +1,13 @@
+frames/ad_sit@1x1: 126 frames  crop 1800x1800+1020+7 -> 1200x1200  speed 1.0
+frames/ad_panel@1x1: 101 frames  crop 1800x1800+1020+7 -> 1200x1200  speed 1.0
+frames/ad_woman@1x1: 151 frames  crop 1800x1800+1020+7 -> 1200x1200  speed 1.0
+frames/an_outlet@1x1: 101 frames  crop 1800x1800+1020+7 -> 1200x1200  speed 1.0
+frames/n_office@1x1: 201 frames  crop 2160x2160+840+0 -> 1200x1200  speed 1.0
+frames/n_ledpan@1x1: 151 frames  crop 2160x2160+840+0 -> 1200x1200  speed 1.0
+frames/n_stool@1x1: 151 frames  crop 2160x2160+840+0 -> 1200x1200  speed 1.0
+frames/n_orbit@1x1: 201 frames  crop 2160x2160+840+0 -> 1200x1200  speed 1.0
+frames/n_interior@1x1: 151 frames  crop 2160x2160+840+0 -> 1200x1200  speed 1.0
+frames/n_lever@1x1: 151 frames  crop 2160x2160+840+0 -> 1200x1200  speed 1.0
+frames/ad_led_slow@1x1: 66 frames  crop 1393x1393+1722+0 -> 1200x1200  speed 0.46
+frames/ad_open_slow@1x1: 106 frames  crop 1800x1800+1212+7 -> 1200x1200  speed 0.5
+DONE

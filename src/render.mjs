@@ -59,11 +59,11 @@ function run(cmd, argv) {
     if (args.sheet !== undefined) {
       // contact sheet: one frame every `sheet` seconds, tiled by ffmpeg
       const step = +args.sheet || 1;
-      const dir = `out/sheet_${scene}`; fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir, { recursive: true });
+      const dir = `out/sheet_${scene}_${W}x${H}`; fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir, { recursive: true });
       let n = 0;
       for (let t = 0; t < dur; t += step) { await shot(first.page, t, `${dir}/s${String(n++).padStart(4, '0')}.png`, 'png'); }
       const cols = +(args.cols || 6);
-      const outFile = `out/sheet_${scene}.jpg`;
+      const outFile = `out/sheet_${scene}_${W}x${H}.jpg`;
       await run(FF, ['-hide_banner', '-loglevel', 'error', '-y', '-framerate', '1', '-i', `${dir}/s%04d.png`, '-vf', `scale=${Math.round(W * zoom / 3)}:-1,tile=${cols}x${Math.ceil(n / cols)}:padding=6:color=0x333333`, '-frames:v', '1', '-q:v', '3', outFile]);
       console.log(`sheet (${n} frames, every ${step}s) ->`, outFile);
       return;
