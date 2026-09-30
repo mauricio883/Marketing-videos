@@ -123,28 +123,51 @@
     return clip({ el: e, from, to, z: o.z ?? 20, tweens: tw, onSeek: (lt) => { const u = Math.min(1, Math.max(0, (lt - delay) / inD)); const v = o.a + (o.b - o.a) * ease(u); e.innerHTML = o.format ? o.format(v) : Math.round(v); } });
   }
 
-  /** Frame-sequence video plate: frames at `${dir}/f%05d.jpg` extracted at `fps`. offset = seconds into the clip at from. */
+  /** Frame-sequence video plate: frames at `${dir}/f%05d.jpg` (natural size fw x fh, e.g. 1440x1920) shown in box (default full stage).
+   *  offset = seconds into the extracted window at clip start; pan: [x0,x1] horizontal offset of the frame inside the box (px, <=0);
+   *  kb: {s0,s1} scale push. speed: playback multiplier. count: number of frames available. */
   function video(dir, o) {
-    const from = o.from, to = o.to;
+    const from = o.from, to = o.to, D = to - from;
     const box = o.box || { x: 0, y: 0, w: W(), h: H() };
+    const fw = o.fw || 1440, fh = o.fh || 1920;
     const wrap = el('div', 'imgwrap card', { width: box.w + 'px', height: box.h + 'px', borderRadius: (o.radius || 0) + 'px', background: '#000' });
     wrap.dataset.radius = o.radius || 0;
-    const im = el('img', 'img', { width: box.w + 'px', height: box.h + 'px', objectPosition: o.position || '50% 50%' });
+    const im = el('img', 'img', { width: fw + 'px', height: fh + 'px', objectFit: 'fill' });
     wrap.appendChild(im);
-    const fps = o.fps || 30, offset = o.offset || 0, count = o.count || 1e9, speed = o.speed || 1;
+    const fps = o.fps || 25, offset = o.offset || 0, count = o.count || 1e9, speed = o.speed || 1;
     const pad = (n) => String(n).padStart(5, '0');
     let last = -1;
-    const D = to - from;
-    const kb = Object.assign({ s0: 1.0, s1: 1.0, x0: 0, y0: 0, x1: 0, y1: 0, ease: 'linear' }, o.kb || {});
+    const kb = Object.assign({ s0: 1.0, s1: 1.0, ease: 'linear' }, o.kb || {});
+    const pan = o.pan || [-(fw - box.w) / 2, -(fw - box.w) / 2];
+    const py = o.py || [-(fh - box.h) / 2, -(fh - box.h) / 2];
     const wrapClip = clip({ el: wrap, from, to, z: o.z ?? 0, ease: o.ease || 'outExpo', tweens: Object.assign({ x: [[0, box.x]], y: [[0, box.y]] }, o.tweens || {}) });
-    clip({ el: im, parent: wrap, from, to, tweens: Object.assign({ scale: [[0, kb.s0], [D, kb.s1, kb.ease]], x: [[0, kb.x0], [D, kb.x1, kb.ease]], y: [[0, kb.y0], [D, kb.y1, kb.ease]] }, o.innerTweens || {}), onSeek: (lt) => {
+    const inner = Object.assign({ scale: [[0, kb.s0], [D, kb.s1, kb.ease]], x: [[0, pan[0]], [D, pan[1], o.panEase || 'linear']], y: [[0, py[0]], [D, py[1], o.panEase || 'linear']] }, o.innerTweens || {});
+    clip({ el: im, parent: wrap, from, to, tweens: inner, onSeek: (lt) => {
       const idx = Math.min(count - 1, Math.max(0, Math.floor((offset + lt * speed) * fps)));
       if (idx === last) return null;
       last = idx;
       im.src = `${dir}/f${pad(idx + 1)}.jpg`;
       return im.decode().catch(() => {});
     } });
+    // transform origin at the box centre so scale pushes in around the visible centre
+    im.style.transformOrigin = `${(-pan[0] + box.w / 2)}px ${(-py[0] + box.h / 2)}px`;
     return wrapClip;
+  }
+
+  /** Gradient scrim for text legibility over footage. dir: 'bottom' (dark at bottom) | 'top' | 'full'. */
+  function scrim(o) {
+    const from = o.from, to = o.to, D = to - from;
+    const col = o.color || '0,0,0', a = o.alpha ?? 0.6;
+    let bg;
+    if (o.dir === 'top') bg = `linear-gradient(180deg, rgba(${col},${a}) 0%, rgba(${col},${a * 0.6}) 40%, rgba(${col},0) 100%)`;
+    else if (o.dir === 'full') bg = `rgba(${col},${a})`;
+    else bg = `linear-gradient(0deg, rgba(${col},${a}) 0%, rgba(${col},${a * 0.7}) 35%, rgba(${col},0) 100%)`;
+    const h = o.h || (o.dir === 'full' ? H() : 1000);
+    const top = o.dir === 'top' ? 0 : H() - h;
+    const e = el('div', '', { width: W() + 'px', height: h + 'px', top: top + 'px', background: bg });
+    const tw = { opacity: [[0, o.fadeIn ? 0 : 1], [o.fadeIn || 0.01, 1]] };
+    if (o.fadeOut) tw.opacity.push([D - o.fadeOut, 1], [D, 0]);
+    return clip({ el: e, from, to, z: o.z ?? 5, tweens: tw });
   }
 
   /** Product cut-out image (on white) that slides in; box {x,y,w,h}. */
@@ -179,5 +202,5 @@
 
   function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
-  window.UI = { bg, image, video, title, text, chip, rule, logo, counter, product, wipe, dots, fx };
+  window.UI = { bg, image, video, scrim, title, text, chip, rule, logo, counter, product, wipe, dots, fx };
 })();

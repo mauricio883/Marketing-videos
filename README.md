@@ -30,3 +30,17 @@ Output: H.264 High, yuv420p, CRF 17, 30 fps, silent AAC track for platform compa
 
 Poppins only, sentence case, British English, 90/10 colour rule (white/black with lime accents),
 official logo files untouched, no gradients on brand surfaces, safe zones kept clear for Reels/TikTok UI.
+
+## Footage workflow (v2)
+
+1. `media/video/` holds the source footage from the shared Drive folder (git-ignored).
+2. `src/tools/shots.json` lists shot windows (source, start, duration, crop centre, zoom, speed).
+   `python3 src/tools/extract_shots.py [ids…]` extracts each window to `frames/<id>/f%05d.jpg`
+   at 1440x1920 (25 fps) so the composition can pan/push inside a 1080x1920 frame without upscaling.
+3. Scenes place footage with `UI.video(F('<id>'), { offset, pan, kb })` and cut on the music grid
+   (`b(k)` = beat k; Werq is 125 bpm, first beat at 0.04 s).
+4. `node src/render.mjs --scene pods-hero-v2 --music media/music/Werq.mp3 --out out/<file>.mp4`
+   mixes the music bed (trim, fades, loudness normalised to -15 LUFS).
+
+Music: "Werq" by Kevin MacLeod (incompetech.com), Creative Commons: By Attribution 4.0.
+Attribution must accompany published videos (post caption / description).

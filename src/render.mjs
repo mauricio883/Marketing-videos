@@ -13,7 +13,7 @@ const { chromium } = require('/opt/node22/lib/node_modules/playwright');
 
 const args = Object.fromEntries(process.argv.slice(2).map((a, i, arr) => a.startsWith('--') ? [a.slice(2), (arr[i + 1] && !arr[i + 1].startsWith('--')) ? arr[i + 1] : true] : []).filter(Boolean));
 const scene = args.scene || 'pods-hero';
-const W = +(args.w || 1080), H = +(args.h || 1920), fps = +(args.fps || 30), zoom = +(args.zoom || 1);
+const W = +(args.w || 1080), H = +(args.h || 1920), fps = +(args.fps || 25), zoom = +(args.zoom || 1);
 const workers = +(args.workers || Math.max(1, Math.min(4, os.cpus().length - 1)));
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const FF = process.env.FFMPEG || '/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2';
@@ -87,11 +87,19 @@ function run(cmd, argv) {
     const outFile = args.out || `out/${scene}_${W}x${H}.mp4`;
     fs.mkdirSync(path.dirname(path.resolve(outFile)), { recursive: true });
     const crf = args.crf || '17';
-    await run(FF, ['-hide_banner', '-loglevel', 'error', '-y', '-framerate', String(fps), '-i', `${framesDir}/f%05d.png`,
-      '-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=48000',
-      '-c:v', 'libx264', '-preset', args.preset || 'slow', '-crf', crf, '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-level', '4.1',
-      '-x264-params', 'keyint=60:min-keyint=30', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-colorspace', 'bt709',
-      '-c:a', 'aac', '-b:a', '96k', '-shortest', '-movflags', '+faststart', outFile]);
+    const filmDur = total / fps;
+    const ffArgs = ['-hide_banner', '-loglevel', 'error', '-y', '-framerate', String(fps), '-i', `${framesDir}/f%05d.png`];
+    if (args.music) {
+      // music bed: trim to the film, gentle fade in/out, loudness normalised for social platforms
+      const fadeOut = +(args.fadeOut || 2.0), gain = args.gain || '-1dB';
+      ffArgs.push('-i', args.music, '-filter_complex', `[1:a]atrim=0:${filmDur.toFixed(3)},asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.6,afade=t=out:st=${(filmDur - fadeOut).toFixed(3)}:d=${fadeOut},loudnorm=I=-15:TP=-1.5:LRA=9,volume=${gain}[a]`, '-map', '0:v', '-map', '[a]');
+    } else {
+      ffArgs.push('-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=48000', '-map', '0:v', '-map', '1:a');
+    }
+    ffArgs.push('-c:v', 'libx264', '-preset', args.preset || 'slow', '-crf', crf, '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-level', '4.1',
+      '-x264-params', `keyint=${fps * 2}:min-keyint=${fps}`, '-color_primaries', 'bt709', '-color_trc', 'bt709', '-colorspace', 'bt709',
+      '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-shortest', '-movflags', '+faststart', outFile);
+    await run(FF, ffArgs);
     const sz = fs.statSync(outFile).size;
     console.log(`encoded -> ${outFile} (${(sz / 1e6).toFixed(1)} MB)`);
     if (!args.keepFrames) fs.rmSync(framesDir, { recursive: true, force: true });

@@ -95,6 +95,9 @@
       for (const p in c.tweens) s[p] = interp(c.tweens[p], lt, c.ease);
       applyStyle(c.el, s);
       if (c.onSeek) { const r = c.onSeek(lt, t, c.el, s); if (r && r.then) pending.push(r); }
+      // make sure every visible bitmap is decoded before the frame is captured
+      const imgs = c.el.tagName === 'IMG' ? [c.el] : c.el.querySelectorAll('img');
+      for (const im of imgs) if (im.src && !im.complete) pending.push(im.decode().catch(() => {}));
     }
     if (pending.length) await Promise.all(pending);
     return true;

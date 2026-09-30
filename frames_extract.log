@@ -1,0 +1,25 @@
+frames/ad_walk: 126 frames  crop 1350x1800+937+7 -> 1440x1920  speed 1.0
+frames/ad_open: 126 frames  crop 1350x1800+1437+7 -> 1440x1920  speed 1.0
+frames/ad_sit: 126 frames  crop 1350x1800+1245+7 -> 1440x1920  speed 1.0
+frames/ad_panel: 101 frames  crop 1350x1800+1245+7 -> 1440x1920  speed 1.0
+frames/ad_laptop: 126 frames  crop 1350x1800+1245+7 -> 1440x1920  speed 1.0
+frames/ad_side: 101 frames  crop 1350x1800+1245+7 -> 1440x1920  speed 1.0
+frames/ad_woman: 151 frames  crop 1350x1800+1245+7 -> 1440x1920  speed 1.0
+frames/an_walk: 126 frames  crop 1350x1800+1053+7 -> 1440x1920  speed 1.0
+frames/an_open: 151 frames  crop 1350x1800+1245+7 -> 1440x1920  speed 1.0
+frames/an_sit: 101 frames  crop 1350x1800+1245+7 -> 1440x1920  speed 1.0
+frames/an_outlet: 101 frames  crop 1350x1800+1245+7 -> 1440x1920  speed 1.0
+frames/an_light: 201 frames  crop 1350x1800+1245+7 -> 1440x1920  speed 1.0
+frames/an_touch: 101 frames  crop 1350x1800+1245+7 -> 1440x1920  speed 1.0
+frames/dp_arch: 151 frames  crop 810x1080+267+0 -> 1440x1920  speed 1.0
+frames/dp_handle: 101 frames  crop 810x1080+555+0 -> 1440x1920  speed 1.0
+frames/dp_seat: 101 frames  crop 810x1080+555+0 -> 1440x1920  speed 1.0
+frames/dp_panel: 151 frames  crop 810x1080+555+0 -> 1440x1920  speed 1.0
+frames/dp_light: 101 frames  crop 810x1080+555+0 -> 1440x1920  speed 1.0
+frames/dp_light2: 101 frames  crop 810x1080+555+0 -> 1440x1920  speed 1.0
+frames/n_office: 201 frames  crop 1620x2160+1110+0 -> 1440x1920  speed 1.0
+frames/n_handle: 151 frames  crop 1620x2160+918+0 -> 1440x1920  speed 1.0
+frames/n_ledpan: 151 frames  crop 1620x2160+1110+0 -> 1440x1920  speed 1.0
+frames/n_seat: 151 frames  crop 1620x2160+1110+0 -> 1440x1920  speed 1.0
+frames/n_table: 151 frames  crop 1620x2160+1110+0 -> 1440x1920  speed 1.0
+DONE

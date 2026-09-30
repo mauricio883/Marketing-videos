@@ -1,0 +1,4 @@
+frames/n_orbit: 201 frames  crop 1620x2160+1110+0 -> 1440x1920  speed 1.0
+frames/n_interior: 151 frames  crop 1620x2160+1110+0 -> 1440x1920  speed 1.0
+frames/n_lever: 151 frames  crop 1620x2160+1110+0 -> 1440x1920  speed 1.0
+DONE

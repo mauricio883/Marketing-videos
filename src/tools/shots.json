@@ -1,0 +1,287 @@
+{
+ "_doc": "Shot windows extracted from the footage. start/dur in source seconds; cx/cy = crop centre (0..1); zoom>1 crops tighter (hides burned-in captions on the Adam clips); speed<1 = slow motion.",
+ "AD": "media/video/Dune/Videos/Adam Dune pod_V.01.mp4",
+ "AN": "media/video/Nest/Videos/Adam Nest pod_V.01.mp4",
+ "DP": "media/video/Dune/Videos/Dune Pod.mp4",
+ "shots": [
+  {
+   "id": "ad_walk",
+   "src": "AD",
+   "start": 0.0,
+   "dur": 5.0,
+   "cx": 0.42,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "ad_open",
+   "src": "AD",
+   "start": 4.0,
+   "dur": 8.0,
+   "cx": 0.55,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "ad_sit",
+   "src": "AD",
+   "start": 12.0,
+   "dur": 5.0,
+   "cx": 0.5,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "ad_panel",
+   "src": "AD",
+   "start": 17.5,
+   "dur": 4.0,
+   "cx": 0.5,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "ad_laptop",
+   "src": "AD",
+   "start": 24.0,
+   "dur": 5.0,
+   "cx": 0.5,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "ad_side",
+   "src": "AD",
+   "start": 31.0,
+   "dur": 4.0,
+   "cx": 0.5,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "ad_woman",
+   "src": "AD",
+   "start": 38.0,
+   "dur": 6.0,
+   "cx": 0.5,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "an_walk",
+   "src": "AN",
+   "start": 0.0,
+   "dur": 5.0,
+   "cx": 0.45,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "an_open",
+   "src": "AN",
+   "start": 4.0,
+   "dur": 8.0,
+   "cx": 0.5,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "an_sit",
+   "src": "AN",
+   "start": 16.0,
+   "dur": 4.0,
+   "cx": 0.5,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "an_outlet",
+   "src": "AN",
+   "start": 20.0,
+   "dur": 4.0,
+   "cx": 0.5,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "an_light",
+   "src": "AN",
+   "start": 24.0,
+   "dur": 8.0,
+   "cx": 0.5,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "an_touch",
+   "src": "AN",
+   "start": 33.0,
+   "dur": 4.0,
+   "cx": 0.5,
+   "cy": 0.42,
+   "zoom": 1.2
+  },
+  {
+   "id": "dp_arch",
+   "src": "DP",
+   "start": 0.0,
+   "dur": 6.0,
+   "cx": 0.35,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "dp_handle",
+   "src": "DP",
+   "start": 10.0,
+   "dur": 4.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "dp_seat",
+   "src": "DP",
+   "start": 14.0,
+   "dur": 4.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "dp_panel",
+   "src": "DP",
+   "start": 18.0,
+   "dur": 6.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "dp_light",
+   "src": "DP",
+   "start": 26.0,
+   "dur": 4.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "dp_light2",
+   "src": "DP",
+   "start": 36.0,
+   "dur": 4.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_office",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0734_01962342.mov",
+   "start": 0.0,
+   "dur": 8.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_handle",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0729_01947534.mov",
+   "start": 2.0,
+   "dur": 6.0,
+   "cx": 0.45,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_ledpan",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0725_01941750.mov",
+   "start": 4.0,
+   "dur": 6.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_seat",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0727_01943910.mov",
+   "start": 8.0,
+   "dur": 6.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_table",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0728_01946478.mov",
+   "start": 9.0,
+   "dur": 6.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_desks",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0733_01959510.mov",
+   "start": 32.0,
+   "dur": 6.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_around",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0733_01959510.mov",
+   "start": 2.0,
+   "dur": 8.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_green",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0740_01967382.mov",
+   "start": 2.0,
+   "dur": 8.0,
+   "cx": 0.45,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_stool",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0737_01964838.mov",
+   "start": 4.0,
+   "dur": 6.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_orbit",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0743_01970910.mov",
+   "start": 4.0,
+   "dur": 8.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_interior",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0742_01969902.mov",
+   "start": 6.0,
+   "dur": 6.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  },
+  {
+   "id": "n_lever",
+   "src": "media/video/Nest/Videos/Raw Material/MVI_0741_01968822.mov",
+   "start": 2.0,
+   "dur": 6.0,
+   "cx": 0.5,
+   "cy": 0.5,
+   "zoom": 1.0
+  }
+ ]
+}
