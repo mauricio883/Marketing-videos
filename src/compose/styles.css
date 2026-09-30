@@ -1,0 +1,38 @@
+@font-face { font-family: 'Poppins'; font-weight: 400; src: url('../../assets/brand/fonts/Poppins-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Poppins'; font-weight: 500; src: url('../../assets/brand/fonts/Poppins-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Poppins'; font-weight: 600; src: url('../../assets/brand/fonts/Poppins-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; src: url('../../assets/brand/fonts/Poppins-Bold.ttf') format('truetype'); }
+
+:root {
+  --lime: #C6D644;
+  --black: #000000;
+  --white: #FFFFFF;
+  --peach: #FDE8AB;
+}
+html, body { margin: 0; padding: 0; background: #000; overflow: hidden; }
+body { font-family: 'Poppins', Arial, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
+#stage { position: relative; overflow: hidden; background: #fff; transform-origin: 0 0; isolation: isolate; }
+#stage > * { position: absolute; left: 0; top: 0; }
+
+.bg { width: 100%; height: 100%; }
+.img { display: block; object-fit: cover; transform-origin: 50% 50%; }
+.imgwrap { overflow: hidden; }
+.title { white-space: nowrap; line-height: 1.02; letter-spacing: -0.02em; font-weight: 700; }
+.title .line { overflow: hidden; padding: 0.06em 0.12em 0.1em 0; margin: -0.06em 0 0; }
+.title .line > span { display: block; transform-origin: 0 100%; }
+.body { font-weight: 500; line-height: 1.25; letter-spacing: -0.005em; }
+.dot { display: inline-block; width: 0.24em; height: 0.24em; border-radius: 50%; background: var(--lime); vertical-align: 0; margin-left: 0.06em; }
+.chip { display: inline-flex; align-items: center; gap: 0.5em; white-space: nowrap; font-weight: 600; letter-spacing: -0.005em; border-radius: 999px; transform-origin: 0% 50%; }
+.chip.on-white { background: #000; color: #fff; }
+.chip.on-black { background: #fff; color: #000; }
+.chip.lime { background: var(--lime); color: #000; }
+.chip.outline-white { border: 3px solid #fff; color: #fff; background: transparent; }
+.chip.outline-black { border: 3px solid #000; color: #000; background: transparent; }
+.chip .cd { width: 0.5em; height: 0.5em; border-radius: 50%; background: var(--lime); flex: none; }
+.chip.lime .cd { background: #000; }
+.chip.on-white .cd { background: var(--lime); }
+.label { font-weight: 600; letter-spacing: 0.02em; text-transform: none; }
+.rule { background: var(--lime); transform-origin: 0 50%; }
+.card { overflow: hidden; }
+.logo { display: block; }
+.grain { pointer-events: none; mix-blend-mode: multiply; }

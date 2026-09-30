@@ -1,0 +1,9 @@
+# rendered output and heavy media stay out of git
+out/
+media/
+frames/
+node_modules/
+*.mp4
+*.mov
+!assets/brand/**
+.DS_Store
